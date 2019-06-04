@@ -1,14 +1,51 @@
-import React from 'react';
-import Comment from '../CommentSection/Comment'
+import React, { Component } from 'react';
+import Comment from '../../components/CommentSection/Comment'
+import data  from '../dummy-data'
+import Icons from './Icons'
 
-const Container = (props) => {
-  console.log(props.data)
-    return (
+
+
+
+class Container extends Component {
+state={data:data,
+  
+  like:0,
+  inputAdd:'',
+  comments:[],
+}
+
+
+
+
+handleOnChange=(e)=>{
+
+  e.preventDefault();
+  this.setState({
+[e.target.name]:e.target.value
+});
+}
+
+
+
+
+addComment = (e, text) => {
+  e.preventDefault();
+  const newComment = {
+      username: "JasonAviles",
+      text:text
+       
+  };
+  this.setState({
+    groceries: [...this.state.comments, newComment]
+  });
+};
+
+  render(){return (
         <div>
-              {props.data.map(
+              {data.map(
                  
-                  (post)=>{
-                       console.log(post)
+                  (post,i)=>{
+                      console.log(post)
                       return (
                           <div key={post.timestamp} className='container'>
 
@@ -22,21 +59,39 @@ const Container = (props) => {
 
                           />
 
-                 <div className='icons'><i className="far fa-heart"></i>    <i className="far fa-comment"></i>
-                  <h3>{post.likes}  likes</h3>
-                  </div>
+                <Icons key={i} name={post}  />
                          
                           
-                           <Comment key={post.id} comments={post.comments} 
-
-
-
-                           /></div>
+                           <Comment 
+                           key={post.username} 
+                           comments={post.comments}
+                            />
+                     
+                           </div>
                          )
+
+
+
                   }
               )}
+
+
+      
+      
+
+
+
+              
         </div>
-    );
+    );}
+
+    
+
+    
 }
+
+
+
+
 
 export default Container;
