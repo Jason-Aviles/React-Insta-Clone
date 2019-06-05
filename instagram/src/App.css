@@ -100,13 +100,19 @@ font-weight: 400;
   border: none;
   background: transparent;
   position: relative;
-  left: 90%;
+  left:43%;
   font-weight: bold;
   top: -43px;
   font-size: 1.3rem;
   cursor: pointer;
 }
-
+form{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
 .searchbar{
   width:100%;
@@ -125,7 +131,7 @@ background: rgba(199, 199, 199, 0.1);
   font-weight: normal;
   text-decoration: inherit;
   border-radius: 15px;
-  width: 30%;
+  width: 50%;
 }
 
 

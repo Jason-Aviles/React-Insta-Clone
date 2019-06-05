@@ -7,15 +7,23 @@ import Icons from './Icons'
 
 
 class Container extends Component {
-state={data:data,
+
+constructor(props){
+  super(props);
+  this.state={data:[],
   
-  like:0,
-  inputAdd:'',
-  comments:[],
+    like:0,
+    inputAdd:'',
+    comments:[],
+  }
+  
 }
 
-
-
+componentDidMount(){
+  this.setState({
+    names: this.props.data
+  });
+}
 
 handleOnChange=(e)=>{
 
@@ -36,16 +44,19 @@ addComment = (e, text) => {
        
   };
   this.setState({
-    groceries: [...this.state.comments, newComment]
+    data: [...this.state.comments, newComment]
   });
 };
 
-  render(){return (
+  render(){
+    
+   
+    return (
         <div>
               {data.map(
                  
                   (post,i)=>{
-                      console.log(post)
+                      
                       return (
                           <div key={post.timestamp} className='container'>
 

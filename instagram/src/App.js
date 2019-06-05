@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from './components/PostContainer/Container'
-import data  from './components/dummy-data'
+import datas  from './components/dummy-data'
 import SearchBar from './components/SearchBar/SearchBar'
 import './App.css';
 
@@ -8,42 +8,47 @@ class App extends  React.Component {
   state={
     data:[],
     
-    searchfield:'',
+    filteredNames: []
  
  
   }
  componentDidMount(){
    this.setState({
-     data:data
+     data:datas
    })
  }
  
+ onSearchSubmit=(term)=>{
+   console.log(term)
+  let names = this.state.data.filter(name =>{
+    console.log(name)
+  return  name.username.toLowerCase().includes(term.toLowerCase())}
+  );
 
-  onSearchChange = (event)=>{
-    this.setState({searchfield: event.target.value})
-     
-}
+  this.setState({
+    filteredNames: names
+  });
+ }
+ 
 
 
   render(){
-   const {data,searchfield}= this.state
-   console.log(searchfield)
- /*
-const filteredData = data.filter(newData =>{
  
-  return newData.username.toLowerCase().includes(searchfield.toLowerCase())
-})*/
-return !data.length ?
-<h1>Loading.....</h1>:
-     (
+
+   
+
+   return  (
       <div>
-      
-      <div>  <SearchBar onSearchChange={this.onSearchChange}   /></div>
+      <div>  <SearchBar onSubmit={this.onSearchSubmit}   /></div>
     
     <div className="App">
      
       <Container
-    
+    data={
+						this.state.filteredNames.length > 0
+							? this.state.filteredNames
+							: this.state.data
+					}
     
          />
     </div></div>

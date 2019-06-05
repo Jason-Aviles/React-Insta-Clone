@@ -8,6 +8,8 @@ class addComments extends Component {
     
   }
 
+  
+
 handleColor =()=>{
 
     this.setState(
