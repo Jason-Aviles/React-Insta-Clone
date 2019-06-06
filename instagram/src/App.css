@@ -179,3 +179,55 @@ padding-right: 10px;
   .black{
     color: black;
   }
+
+.login-container{
+ 
+  width:100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+.login{
+  width: 50%;
+  background: rgba(173, 167, 172, 0.285);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 25%;
+  height: 764px;
+  position: fixed;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.login span{
+font-size: 1.3rem;
+}
+
+.login input{
+  width:30%;
+  padding: 10px;
+  margin: 10px auto;
+  font-size: 1.3rem;
+}
+.login h1{
+  font-family: 'Pacifico', cursive;
+  font-size: 4rem;
+  margin: 0;
+}
+
+.login button {
+  font-weight: 300;
+  padding: 15px 20px;
+  margin: 15px auto;
+  width: 106px;
+  background: #a8a8d0a3;
+  border-radius: 10px;
+}
+
+.login img{
+  width:25%;
+}

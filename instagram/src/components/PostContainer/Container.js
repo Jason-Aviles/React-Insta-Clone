@@ -1,108 +1,49 @@
-import React, { Component } from 'react';
-import Comment from '../../components/CommentSection/Comment'
-import data  from '../dummy-data'
-import Icons from './Icons'
+import React, { Component } from "react";
+import Comment from "../../components/CommentSection/Comment";
 
-
-
+import Icons from "./Icons";
 
 class Container extends Component {
-
-constructor(props){
-  super(props);
-  this.state={data:[],
-  
-    like:0,
-    inputAdd:'',
-    comments:[],
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: []
+    };
   }
-  
-}
 
-componentDidMount(){
-  this.setState({
-    names: this.props.data
-  });
-}
+  componentDidUpdate(prevProps) {
+    // if prevProps doesnt equal this.props setState of data to props.data
+    if (prevProps !== this.props) {
+      this.setState({
+        data: this.props.data
+      });
+    }
+  }
 
-handleOnChange=(e)=>{
-
-  e.preventDefault();
-  this.setState({
-[e.target.name]:e.target.value
-});
-}
-
-
-
-
-addComment = (e, text) => {
-  e.preventDefault();
-  const newComment = {
-      username: "JasonAviles",
-      text:text
-       
-  };
-  this.setState({
-    data: [...this.state.comments, newComment]
-  });
-};
-
-  render(){
-    
-   
+  render() {
     return (
-        <div>
-              {data.map(
-                 
-                  (post,i)=>{
-                      
-                      return (
-                          <div key={post.timestamp} className='container'>
+      <div>
+        {this.state.data.map((post, i) => {
+          return (
+            <div key={post.timestamp} className="container">
+              <div className="box-header">
+                <h2>
+                  <img alt={post.id} src={post.thumbnailUrl} />
+                  {post.username}
+                </h2>
+              </div>
 
-                        <div className='box-header'> <h2>  <img alt={post.id} 
-                          src={post.thumbnailUrl}/>
-                          {post.username}</h2></div> 
+              <img className="main-img" alt={post.id} src={post.imageUrl} />
 
+              <Icons key={i} name={post} />
 
-                          <img className='main-img' alt={post.id} 
-                          src={post.imageUrl}
-
-                          />
-
-                <Icons key={i} name={post}  />
-                         
-                          
-                           <Comment 
-                           key={post.username} 
-                           comments={post.comments}
-                            />
-                     
-                           </div>
-                         )
-
-
-
-                  }
-              )}
-
-
-      
-      
-
-
-
-              
-        </div>
-    );}
-
-    
-
-    
+              <Comment key={post.username} comments={post.comments} />
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
 }
-
-
-
-
 
 export default Container;
