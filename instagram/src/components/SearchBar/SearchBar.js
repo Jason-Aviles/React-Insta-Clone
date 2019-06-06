@@ -9,7 +9,8 @@ const SearchBarstyle = styled.div`
   padding: 20px;
   border-bottom: 1px solid #8080803d;
   background: rgba(199, 199, 199, 0.1);
-
+  position: relative;
+    
   input {
     padding: 10px;
     font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
@@ -20,6 +21,10 @@ const SearchBarstyle = styled.div`
     width: 50%;
   }
 `;
+
+
+
+
 const Topleft = styled.div`
   width: 100%;
   display: flex;
