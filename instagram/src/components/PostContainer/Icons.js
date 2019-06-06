@@ -1,4 +1,19 @@
 import React, { Component } from "react";
+import styled from "styled-components";
+
+const IconsStyle = styled.div`
+  width: 100%;
+  padding: 10px 0;
+  i {
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  h3 {
+    margin: 0 auto;
+    margin-left: 10px;
+    font-size: 0.9rem;
+  }
+`;
 
 class Icons extends Component {
   state = {
@@ -12,7 +27,7 @@ class Icons extends Component {
 
   render() {
     return (
-      <div className="icons ">
+      <IconsStyle>
         <i
           className={
             /// if  the state of on is true do this if not do that
@@ -27,7 +42,7 @@ class Icons extends Component {
           this.state.on ? this.props.name.likes + 1 : this.props.name.likes}
           likes
         </h3>
-      </div>
+      </IconsStyle>
     );
   }
 }

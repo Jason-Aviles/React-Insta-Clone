@@ -1,4 +1,53 @@
 import React from "react";
+import styled from "styled-components";
+
+const SearchBarstyle = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-bottom: 1px solid #8080803d;
+  background: rgba(199, 199, 199, 0.1);
+
+  input {
+    padding: 10px;
+    font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    border-radius: 15px;
+    width: 50%;
+  }
+`;
+const Topleft = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 5%;
+  img {
+    width: 5%;
+    border-right: 2px solid #8080803d;
+    margin-right: 10px;
+    padding-right: 10px;
+  }
+  h1 {
+    font-family: "Pacifico", cursive;
+  }
+`;
+
+const Topright = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 1%;
+  i {
+    margin-right: 2%;
+    cursor: pointer;
+  }
+`;
 
 class SearchBar extends React.Component {
   state = {
@@ -15,14 +64,14 @@ class SearchBar extends React.Component {
   render() {
     console.log(this.state.term);
     return (
-      <div className="searchbar">
-        <div className="topLeft">
+      <SearchBarstyle>
+        <Topleft>
           <img
             alt="1"
             src="https://images.vexels.com/media/users/3/141955/isolated/preview/d0f766bbe2603124417ed31d027b14c8-camera-icon-or-logo-by-vexels.png"
           />
           <h1>Igram</h1>
-        </div>
+        </Topleft>
 
         <input
           type="search"
@@ -36,12 +85,12 @@ class SearchBar extends React.Component {
           onKeyDown={this.onFormSubmit}
         />
 
-        <div className="topRight">
+        <Topright>
           <i className="far fa-compass fa-2x" />
           <i className="fab fa-gratipay  fa-2x" />
           <i className="far fa-user  fa-2x" />
-        </div>
-      </div>
+        </Topright>
+      </SearchBarstyle>
     );
   }
 }

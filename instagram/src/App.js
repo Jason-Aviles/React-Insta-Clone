@@ -58,5 +58,5 @@ class App extends React.Component {
   }
 }
 
-
+//AUTH OF THE HOC 
 export default auth(App)(Login)

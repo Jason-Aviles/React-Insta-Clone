@@ -1,6 +1,28 @@
 import React, { Component } from "react";
 import AddComment from "./addComments";
+import styled from "styled-components";
 import PropTypes from "prop-types";
+
+const CommentcontainerStyled = styled.div`
+  width: 100%;
+  flex-direction: column;
+`;
+const CommentsStyled = styled.div`
+  font-size: 0.9rem;
+  /* background: sandybrown; */
+  width: 100%;
+  margin: 10px;
+`;
+const CommentsH2styled = styled.h2`
+  font-size: 0.9rem;
+  margin: 0;
+`;
+const CommentsSpanstyled = styled.span`
+  font-weight: 400;
+  font-size: 0.9rem;
+  margin: 0;
+`;
+
 class Comments extends Component {
   state = {
     comments: []
@@ -32,15 +54,15 @@ class Comments extends Component {
 
   render() {
     return (
-      <div className="comment-container">
+      <CommentcontainerStyled>
         {this.state.comments.map(x => {
           //rendering the usernames and text from the comments
           return (
-            <div className="comments" key={x.text}>
-              <h2>
-                {x.username} <span>{x.text} </span>{" "}
-              </h2>
-            </div>
+            <CommentsStyled key={x.text}>
+              <CommentsH2styled>
+                {x.username} <CommentsSpanstyled>{x.text} </CommentsSpanstyled>{" "}
+              </CommentsH2styled>
+            </CommentsStyled>
           );
         })}
         <AddComment
@@ -48,7 +70,7 @@ class Comments extends Component {
           //** this is not  in the map above i only needed one comment box for each
           addComment={this.addComment}
         />
-      </div>
+      </CommentcontainerStyled>
     );
   }
 }
